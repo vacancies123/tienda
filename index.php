@@ -1,8 +1,9 @@
 <?php
 include 'global/sesion.php';
 include 'global/config.php';
-include 'global/conexion.php';
 include 'carrito.php';
+include 'global/conexion.php';
+
 include 'templates/caberera.php';
 ?>
 <br>

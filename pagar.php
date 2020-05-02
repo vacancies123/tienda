@@ -9,7 +9,7 @@ include 'templates/caberera.php';
 <?php
 if($_POST){
     $total=0;
-    $SID=session_id();
+    $SID=$_SESSION['ID'];
     $Correo=$_POST['email'];
     foreach($_SESSION['CARRITO'] as $indice=>$producto){  
         $total=$total+($producto['PRECIO']*$producto['CANTIDAD']);

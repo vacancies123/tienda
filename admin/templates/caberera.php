@@ -16,62 +16,19 @@
 <body>
     
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-        <a class="navbar-brand" href="index.php"><img src="templates/logo.png" alt=""></a>
+        <a class="navbar-brand" href="index.php">Logo</a>
         <button class="navbar-toggler" data-target="#my-nav" data-toggle="collapse" aria-controls="my-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div id="my-nav" class="collapse navbar-collapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="index.php">home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="admin.php">Mostrar productos<span class="sr-only">Mostrar productos</span></a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="mostrarCarrito.php" tabindex="-1" aria-disabled="true">carrito (<?php 
-                    
-										if (isset($_SESSION['rol'])) {
-											
-											if (empty($_SESSION['CARRITO'])) {
-												echo 0;
-											
-											}else{
-												$numer= count($_SESSION['CARRITO']);
-												echo $numer;
-											}
-										}else{
-											
-											if (!isset($_COOKIE['pepec'])) {
-												
-												echo 0;
-											}else{
-												
-												$data=unserialize($_COOKIE['pepec'],["allowed_classes" => true]);
-												
-												if (empty($datos)) {
-													echo 0;
-												}else{
-
-													foreach($datos as $indice=>$producto){
-														$numer = $indice;
-													}
-													echo $numer+1;
-												}
-											}
-										}
-									?>)</a>
+                    <a class="nav-link" href="insertarproductos.php">insertar productos <span class="sr-only">insertar productos</span></a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="log.php">log <span class="sr-only">(current)</span></a>
-                </li>
-                <?php
-                    if(!isset($_SESSION['rol'])=="0"){
-                        include 'nav/cerrar.php';
-                    }
-                    ?>
-                <?php
-                    if(isset($_SESSION['rol'])=="0"){
-                        include 'nav/log.php';
-                    }
-                    ?>
+            
                 </li>
             </ul>
         </div>
