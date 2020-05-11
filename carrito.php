@@ -1,13 +1,13 @@
 <?php
 
 $mensaje="";
-
+//creamos un if que responde de una manera determinada dependiendo de la accion enviada por el formulario
 if(isset($_POST['btnAccion'])){
     
     switch($_POST['btnAccion']){
 
         case 'Agregar':
-
+//se comprueban y se desencriptan los datos
             if(is_numeric( openssl_decrypt($_POST['id'],COD,KEY ))){
 
                 $ID= openssl_decrypt($_POST['id'],COD,KEY );
@@ -38,7 +38,7 @@ if(isset($_POST['btnAccion'])){
             }else{
                 $mensaje.="Errooor algo pasa con el precio"."</br>"; break;
             }
-
+//en caso de que tengamos sesion iniciada guardamos todo en la sesion
     if(isset($_SESSION['rol'])){
                 echo "sesion";            
         if(!isset($_SESSION['CARRITO'])){
@@ -73,6 +73,7 @@ if(isset($_POST['btnAccion'])){
         }
     }
     }else{
+//En caso de no tener sesion guarda la informacion en la cookie
         if (empty($_COOKIE['pepec'])) {
             $datos=array();
             $datos[0]=array(
@@ -107,11 +108,11 @@ if(isset($_POST['btnAccion'])){
     
 break;
 case "Eliminar":
-
+//se comprueban los datos antes de eliminar
     if(is_numeric(openssl_decrypt($_POST['id'],COD,KEY))){
         $ID=openssl_decrypt($_POST['id'],COD,KEY);
     }
-
+//En el caso de tener sesion activa se borra informacion de la sesion
     if (isset($_SESSION['rol'])) {
 
         foreach($_SESSION['CARRITO'] as $indice => $producto){
@@ -120,7 +121,7 @@ case "Eliminar":
             }
         }
     }else{
-
+//si no tenemos sesion borra la informacion de la cookie
         $datos=unserialize($_COOKIE['pepec'],["allowed_classes" => true]);
         setcookie('pepec',serialize($datos),time()-30000,"/");
 
