@@ -9,6 +9,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </head>
 <body><?php
+//si recibe informacion del formulario conecta con la base
 if (isset($_POST["submit"])){
  $host_db = "localhost";
  $user_db = "id12791729_jose2";
@@ -21,7 +22,7 @@ if (isset($_POST["submit"])){
  if ($conexion->connect_error) {
  die("La conexion falló: " . $conexion->connect_error);
 }
-
+//buscamos el nombre de usuario con un SELECT en caso de que no exita nos dejara registrarlo si ya existe nos pedira que usemos otro
  $buscarUsuario = "SELECT * FROM $tbl_name
  WHERE username = '$_POST[username]' ";
 
@@ -95,7 +96,7 @@ if (isset($_POST["submit"])){
                 
                  <br/><br/>
                 
-                  <!--Password-->
+                  <!--Correo-->
                   <label for="pass">Correo:</label><br>
                  <input type="email" name="correo"  required>
                 
